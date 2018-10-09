@@ -2,8 +2,6 @@
 
 from appdirs import user_data_dir
 from os import path
-from shutil import copytree, rmtree
-import sys
 from i18n import _
 import musics
 
@@ -12,24 +10,6 @@ dataDir = user_data_dir(roaming=True).replace("\\", "/")
 
 # Main Dofus file
 filename = dataDir + "/Lindo/game/build/script.js"
-
-# Songs directory
-songsDir = dataDir + "/Lindo/game/build/songs"
-
-# Songs directory but readable for a web browser
-jsDir = "file:///{}".format(songsDir).replace("file:////", "file:///")
-
-
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        # noinspection PyProtectedMember,PyUnresolvedReferences
-        base_path = sys._MEIPASS
-    except AttributeError:
-        base_path = path.abspath(".")
-
-    return path.join(base_path, relative_path)
 
 
 def prompt_welcome_message():
@@ -51,23 +31,13 @@ def main():
 
     data = ""
 
-    try:
-        rmtree(songsDir)
-    except FileNotFoundError:
-        pass
-
     if choice == 1:
         print(_("1.29"))
         data = musics.m129
 
-        print(_("copy"))
-        copytree(resource_path("songs"), songsDir)
     elif choice == 2:
         print(_("2.0"))
         data = musics.m200
-
-        print(_("copy"))
-        copytree(resource_path("songs"), songsDir)
 
     else:
         print(_("reset"))
