@@ -10,8 +10,7 @@ Une bibliothèque pour modifier les musiques de Dofus Touch.
 Il y a 2 choix de modification
 
 - 1.29:
-	- Ajoute les anciennes musiques de la 1.29. Cela comprend pour l'instant Incarnam, Amakna, Bonta, Brakmar, Plaines de Cania, Combat en Amakna, Combat en plaines de Cania
-	- **A venir** Musiques des temples, Pandala, Ile des wabbits
+	- Ajoute les anciennes musiques de la 1.29. Cela comprend pour l'instant Incarnam, Amakna, Bonta, Brakmar, Plaines de Cania, Combat en Amakna, Combat en plaines de Cania, Musiques des temples, Pandala, Combat à Pandala et Ile des wabbits
 
 - 2.0:
 	- Ajoute les anciennces musiques de la 2.0. Cela concerne Amakna et la Plaine des Cania
