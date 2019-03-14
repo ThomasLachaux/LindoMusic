@@ -1,16 +1,9 @@
 # coding: utf-8
 
-from appdirs import user_data_dir
+from appdirs import user_data_dir, user_config_dir
 from os import path
 from i18n import _
 import musics
-
-# Appdata directory
-dataDir = user_data_dir(roaming=True).replace("\\", "/")
-
-# Main Dofus file
-filename = dataDir + "/Lindo/game/build/script.js"
-
 
 def prompt_welcome_message():
     """ Prompts the welcome message and the user makes a choice between which kind of song he chooses"""
@@ -26,7 +19,19 @@ def prompt_welcome_message():
 def main():
     choice = prompt_welcome_message()
 
-    if not path.exists(filename):
+    # Appdata directory
+    dataDir = user_data_dir(roaming=True).replace("\\", "/") + '/Lindo'
+    dataDirUnix = user_config_dir(roaming=True).replace("\\", "/") + '/lindo'
+
+    # Main Dofus file
+    filename = "/game/build/script.js"
+    print(dataDir)
+    print(dataDirUnix)
+    if path.exists(dataDir):
+        filename = dataDir + filename
+    elif path.exists(dataDirUnix):
+        filename = dataDirUnix + filename
+    else:
         raise FileNotFoundError(_("file_not_found").format(filename))
 
     data = ""
@@ -34,11 +39,9 @@ def main():
     if choice == 1:
         print(_("1.29"))
         data = musics.m129
-
     elif choice == 2:
         print(_("2.0"))
         data = musics.m200
-
     else:
         print(_("reset"))
 
